@@ -1,5 +1,5 @@
 #Use alpine linux lightweight container
-FROM python:3.9.2-alpine3.13
+FROM python:3.9.2-buster
 
 # Prepare for deploying zbxdb
 RUN mkdir /zbxdb
@@ -8,22 +8,21 @@ RUN ls /zbxdb
 RUN cd /zbxdb && pwd
 
 # Install pyenv dependencies (curl, bash, git, patch, gcc, zlib)
-RUN apk add curl
-RUN apk add bash
-RUN apk add git
-RUN apk add patch
-RUN apk add gcc
-RUN apk add clang
-RUN apk add zlib
-RUN apk add readline-dev
-RUN apk add sqlite-dev
-RUN apk add bzip2-dev
-RUN apk add llvm
-RUN apk add openssl-dev
-RUN apk add ncurses-dev
-RUN apk add libffi-dev
-RUN apk add gcompat
-RUN apk add glib
+RUN apt install curl
+RUN apt install bash
+RUN apt install git
+RUN apt install patch
+RUN apt install gcc
+RUN apt install zlib1g-dev
+#RUN apt install lib32readline-dev
+RUN apt install sqlite
+RUN apt install bzip2-dev
+RUN apt install llvm
+RUN apt install openssl-dev
+RUN apt install ncurses-dev
+RUN apt install libffi-dev
+RUN apt install gcompat
+RUN apt install glib
 
 # Create environment variables.
 ENV HOME /zbxdb
